@@ -6,6 +6,7 @@ import com.swg.model.User;
 import com.swg.repository.UserRepository;
 import com.swg.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,22 +32,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getCurrentUser() {
-        return null;
+    public User getCurrentUser() throws UserException {
+
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email);
+
+        if(user == null){
+            throw new UserException("user not found..!");
+        }
+        return user;
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        return null;
+    public User getUserByEmail(String email) throws UserException {
+
+        User user = userRepository.findByEmail(email);
+
+        if(user == null){
+            throw new UserException("user not found..!");
+        }
+        return user;
     }
 
+
+    //Problem with exception
     @Override
-    public User getUserById(Long id) {
-        return null;
+    public User getUserById(Long id) throws Exception {
+        return userRepository.findById(id).orElseThrow(
+                ()-> new Exception("user not found...!")
+        );
     }
 
     @Override
     public List<User> getAllUser() {
-        return List.of();
+        return userRepository.findAll();
     }
 }
