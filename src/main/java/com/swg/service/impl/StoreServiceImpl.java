@@ -3,12 +3,22 @@ package com.swg.service.impl;
 import com.swg.model.Store;
 import com.swg.model.User;
 import com.swg.payload.dto.StoreDTO;
+import com.swg.repository.StoreRepository;
 import com.swg.service.StoreService;
+import com.swg.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
+@RequiredArgsConstructor
 public class StoreServiceImpl implements StoreService {
 
+
+    private  final StoreRepository storeRepository;
+    private final UserService userService;
 
     @Override
     public StoreDTO createStore(StoreDTO storeDTO, User user) {
