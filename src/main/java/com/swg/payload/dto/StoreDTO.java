@@ -4,9 +4,11 @@ import com.swg.domain.StoreStatus;
 import com.swg.model.StoreContact;
 import com.swg.model.User;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 public class StoreDTO {
 
 
