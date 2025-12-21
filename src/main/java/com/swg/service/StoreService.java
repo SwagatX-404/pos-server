@@ -9,7 +9,7 @@ import java.util.List;
 public interface StoreService {
 
     StoreDTO createStore(StoreDTO storeDTO, User user);
-    StoreDTO getStoreById(Long id);
+    StoreDTO getStoreById(Long id) throws Exception;
     List<StoreDTO> getAllStores();
     Store getStoreByAdmin();
     StoreDTO updateStore(Long id, StoreDTO storeDTO);

@@ -1,5 +1,6 @@
 package com.swg.service.impl;
 
+import com.swg.mapper.StoreMapper;
 import com.swg.model.Store;
 import com.swg.model.User;
 import com.swg.payload.dto.StoreDTO;
@@ -22,13 +23,24 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public StoreDTO createStore(StoreDTO storeDTO, User user) {
-        return null;
+
+        Store store = StoreMapper.toEntity(storeDTO, user);
+
+        return StoreMapper.toDTO(storeRepository.save(store));
     }
 
+
+
     @Override
-    public StoreDTO getStoreById(Long id) {
-        return null;
+    public StoreDTO getStoreById(Long id) throws Exception {
+
+        Store store = storeRepository.findById(id).orElseThrow(
+                ()-> new Exception("Store not found....!")
+        );
+        return StoreMapper.toDTO(store);
     }
+
+
 
     @Override
     public List<StoreDTO> getAllStores() {
