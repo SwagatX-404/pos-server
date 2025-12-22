@@ -1,7 +1,9 @@
 package com.swg.service.impl;
 
+import com.swg.exceptions.UserException;
 import com.swg.mapper.StoreMapper;
 import com.swg.model.Store;
+import com.swg.model.StoreContact;
 import com.swg.model.User;
 import com.swg.payload.dto.StoreDTO;
 import com.swg.repository.StoreRepository;
@@ -11,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -44,26 +47,71 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public List<StoreDTO> getAllStores() {
-        return List.of();
+
+        List<Store> dtos = storeRepository.findAll();
+
+        return dtos.stream().map(StoreMapper::toDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public Store getStoreByAdmin() {
-        return null;
-    }
+
 
     @Override
-    public StoreDTO updateStore(Long id, StoreDTO storeDTO) {
-        return null;
+    public Store getStoreByAdmin() throws UserException {
+
+        User admin = userService.getCurrentUser();
+        return storeRepository.findByStoreAdminId(admin.getId());
     }
 
-    @Override
-    public StoreDTO deleteStore(Long id) {
-        return null;
-    }
+
 
     @Override
-    public StoreDTO getStoreByEmployee() {
-        return null;
+    public StoreDTO updateStore(Long id, StoreDTO storeDTO) throws Exception {
+
+        User currentUser = userService.getCurrentUser();
+        Store existing = storeRepository.findByStoreAdminId(currentUser.getId());
+
+        if(existing == null){
+            throw  new Exception("Store not found for the admin user...");
+        }
+
+        existing.setBrand(storeDTO.getBrand());
+        existing.setDescription(storeDTO.getDescription());
+
+        if(storeDTO.getStoreType()!= null){
+            existing.setStoreType(storeDTO.getStoreType());
+        }
+
+        if(storeDTO.getContact() != null) {
+            StoreContact contact = StoreContact.builder()
+                    .address(storeDTO.getContact().getAddress())
+                    .phone(storeDTO.getContact().getPhone())
+                    .email(storeDTO.getContact().getEmail())
+                    .build();
+            existing.setContact(contact);
+        }
+        Store updatedStore = storeRepository.save(existing);
+        return StoreMapper.toDTO(updatedStore);
+
+    }
+
+
+
+    @Override
+    public void deleteStore(Long id) throws UserException {
+
+        Store store = getStoreByAdmin();
+        storeRepository.delete(store);
+    }
+
+
+
+    @Override
+    public StoreDTO getStoreByEmployee() throws UserException {
+
+        User currentUser = userService.getCurrentUser();
+        if(currentUser == null){
+            throw new UserException("You don't have permission to access this store..!");
+        }
+        return StoreMapper.toDTO(currentUser.getStore());
     }
 }
