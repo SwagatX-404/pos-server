@@ -1,5 +1,6 @@
 package com.swg.service.impl;
 
+import com.swg.domain.StoreStatus;
 import com.swg.exceptions.UserException;
 import com.swg.mapper.StoreMapper;
 import com.swg.model.Store;
@@ -113,5 +114,16 @@ public class StoreServiceImpl implements StoreService {
             throw new UserException("You don't have permission to access this store..!");
         }
         return StoreMapper.toDTO(currentUser.getStore());
+    }
+
+    @Override
+    public StoreDTO moderateStore(Long id, StoreStatus status) throws Exception {
+
+        Store store = storeRepository.findById(id).orElseThrow(
+                ()-> new Exception("Store not found....!")
+        );
+        store.setStatus(status);
+        Store updatedStore = storeRepository.save(store);
+        return StoreMapper.toDTO(updatedStore);
     }
 }
