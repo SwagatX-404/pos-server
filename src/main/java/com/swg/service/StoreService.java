@@ -1,5 +1,6 @@
 package com.swg.service;
 
+import com.swg.domain.StoreStatus;
 import com.swg.exceptions.UserException;
 import com.swg.model.Store;
 import com.swg.model.User;
@@ -16,6 +17,8 @@ public interface StoreService {
     StoreDTO updateStore(Long id, StoreDTO storeDTO) throws Exception;
     void deleteStore(Long id) throws UserException;
     StoreDTO getStoreByEmployee() throws UserException;
+
+    StoreDTO moderateStore(Long id, StoreStatus status) throws Exception;
 
 
 }
