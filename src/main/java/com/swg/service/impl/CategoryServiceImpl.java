@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//Implementation of CategoryService interface(Category Service Implementation)
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
