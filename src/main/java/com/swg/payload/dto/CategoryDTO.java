@@ -4,6 +4,7 @@ import com.swg.model.Store;
 import lombok.Builder;
 import lombok.Data;
 
+//Data Transfer Object for Category entity(DTO for Category)
 @Data
 @Builder
 public class CategoryDTO {
