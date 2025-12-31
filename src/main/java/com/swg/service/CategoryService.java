@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface CategoryService {
 
+    // create interface methods for CategoryService
     CategoryDTO createCategory(CategoryDTO dto);
     List<CategoryDTO> getCategoriesByStore(Long storeId);
     CategoryDTO updateCategory(Long id, CategoryDTO dto) ;
