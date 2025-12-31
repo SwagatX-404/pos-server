@@ -54,14 +54,6 @@ public class ProductController {
 
 
     //storeId
-    @GetMapping("/store/{storeId}/search")
-    public ResponseEntity<List<ProductDTO>> searchByKeyword(
-            @PathVariable Long storeId,
-            @RequestParam String keyword,
-            @RequestHeader("Authorization") String jwt) throws Exception {
-
-        return ResponseEntity.ok(productService.searchByKeyword(storeId, keyword));
-    }
 
 
     @DeleteMapping("/{id}")
