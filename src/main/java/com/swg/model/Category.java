@@ -4,6 +4,7 @@ package com.swg.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+//Category entity representing product categories in the system(Model for Category)
 @Entity
 @Getter
 @Setter
