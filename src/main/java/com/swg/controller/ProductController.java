@@ -53,7 +53,8 @@ public class ProductController {
     }
 
 
-    //storeId
+    
+    //storeId // add getmapping search keyword to product controller
     @GetMapping("/store/{storeId}/search")
     public ResponseEntity<List<ProductDTO>> searchByKeyword(
             @PathVariable Long storeId,
