@@ -1,12 +1,14 @@
 package com.swg.service.impl;
 
 import com.swg.mapper.ProductMapper;
+import com.swg.model.Category;
 import com.swg.model.Product;
 import com.swg.model.Store;
 import com.swg.model.User;
 import com.swg.payload.dto.ProductDTO;
 import com.swg.repository.ProductRepository;
 import com.swg.repository.StoreRepository;
+import com.swg.repository.CategoryRepository;
 import com.swg.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,17 +25,23 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private  final StoreRepository storeRepository;
-
+    private final CategoryRepository categoryRepository;
 
     @Override
-    public ProductDTO createProduct(ProductDTO productDTO, User user)  {
+    public ProductDTO createProduct(ProductDTO productDTO, User user) throws Exception {
        Store store = storeRepository.findById(
                 productDTO.getStoreId()
        ).orElseThrow(
                 ()-> new RuntimeException("Store not found....!")
        );
 
-        Product product = ProductMapper.toEntity(productDTO, store);
+        Category category =categoryRepository.findById(
+                productDTO.getCategoryId()
+        ).orElseThrow(
+                ()-> new Exception("Category not found....!")
+        );
+
+        Product product = ProductMapper.toEntity(productDTO, store, category);
         Product savedProduct = productRepository.save(product);
 
         return ProductMapper.toDTO(savedProduct);
@@ -47,6 +55,9 @@ public class ProductServiceImpl implements ProductService {
                 ()-> new Exception("product not found....!")
         );
 
+
+
+
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setSku(productDTO.getSku());
@@ -55,6 +66,16 @@ public class ProductServiceImpl implements ProductService {
         product.setSelligPrice(productDTO.getSelligPrice());
         product.setBrand(productDTO.getBrand());
         product.setUpdatedAt(LocalDateTime.now());
+
+        if(productDTO.getCategoryId()!=null) {
+            Category category = categoryRepository.findById(
+                    productDTO.getCategoryId()
+            ).orElseThrow(
+                    () -> new Exception("Category not found....!")
+            );
+            product.setCategory(category);
+
+        }
 
         Product savedProduct = productRepository.save(product);
         return ProductMapper.toDTO(savedProduct);

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//Impleme   ntation of CategoryService interface(Category Service Implementation)
+//Implementation of CategoryService interface(Category Service Implementation)
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {

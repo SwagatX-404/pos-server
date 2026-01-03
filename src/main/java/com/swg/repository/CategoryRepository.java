@@ -9,7 +9,5 @@ import java.util.List;
 //Repository interface for Category entity(Category Repository)
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    List<Category> FindByStoreId(long storeId);
-
     List<Category> findByStoreId(Long storeId);
 }
