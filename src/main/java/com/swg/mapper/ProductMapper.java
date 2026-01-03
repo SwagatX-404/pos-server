@@ -1,5 +1,6 @@
 package com.swg.mapper;
 
+import com.swg.model.Category;
 import com.swg.model.Product;
 import com.swg.model.Store;
 import com.swg.payload.dto.ProductDTO;
@@ -16,6 +17,7 @@ public class ProductMapper {
                 .mrp(product.getMrp())
                 .selligPrice(product.getSelligPrice())
                 .brand(product.getBrand())
+                .category(CategoryMapper.toDTO(product.getCategory()))
                 .storeId(product.getStore()!=null?product.getStore().getId():null)
                 .image(product.getImage())
                 .createdAt(product.getCreatedAt())
@@ -25,10 +27,14 @@ public class ProductMapper {
 
     }
 
-    public static Product toEntity(ProductDTO productDTO, Store store){
+    public static Product toEntity(ProductDTO productDTO,
+                                   Store store,
+                                   Category category){
 
        return Product.builder()
                 .name(productDTO.getName())
+                .store(store)
+                .category(category)
                 .sku(productDTO.getSku())
                 .description(productDTO.getDescription())
                 .mrp(productDTO.getMrp())
