@@ -41,7 +41,7 @@ public class Branch {
     @ManyToOne
     private Store store;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.REMOVE)
     private User manager;
 
 
