@@ -1,0 +1,101 @@
+[33m07cb65d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m fix: set compolsory @NoArgsConstructor @AllArgsConstructor
+[33m2650cb0[m fix: set annotaion id generate AUTO
+[33m0b7a7e3[m feat: implement body createInventory, updateInventory, deleteInventory, getInventoryById, getInventoryByProductIdAndBranchId and getAllInventoryByBranchId
+[33m97d50e5[m feat: create and implement "InventoryServiceImpl"
+[33mbbf43dd[m feat: create interface "InventoryService"
+[33m38f2641[m feat: create "InventoryRepository" interface
+[33m6e14a54[m feat: create "InventoryMapper"
+[33m0fcca18[m feat: create InventoryDTO - id, branch, branchId. productId, product, quantity and lastupdate
+[33mcd2c7ac[m note: everything is ok, testing is ok untill that feat: new Inventory feature is create and now we create model for that
+[33ma6ec3f7[m fix: annotation
+[33md2ec4b9[m fix: annotation
+[33md41b008[m fix: these are mandatory @NoArgsConstructor @AllArgsConstructor
+[33m199c54c[m fix: User manager @ManyToOne  to @OneToOne
+[33m0558015[m fix claims.get("email") instead of "emails"
+[33m1da77a4[m feat: create BranchControll method and mapping ("/api/branches") several endpoint
+[33m42dd163[m feat: implements BranchService createBranch, updateBranch, deleteBranch, deleteBranch, getBranchById
+[33ma51fb15[m refactor: BranchService interface
+[33mf755367[m feat: create BranchRepository
+[33m7b0b97a[m feat: implement BranchService
+[33m5b8ab8c[m feat : create interface for BranchService
+[33ma584f45[m feat: create and set up BranchMapper
+[33mc98fa5d[m feat: create BranchDTO
+[33m5102d74[m New Feat: for Branch create model for branch
+[33md519725[m ref : update and add categoryRepository and functionality
+[33mab5288a[m ref : throws exception to createProduct
+[33m7d03f47[m add category dto
+[33m549cd37[m Add Category relationship to Product entity
+[33m899ca18[m Refactor: update ProductMapper to include category mapping in toDTO method and adjust toEntity method signature
+[33mcf98ffa[m Refactor: update CategoryDTO to remove unused Store field and add storeId for clarity; fix method naming in CategoryRepository
+[33mc2fb4d5[m Refactor: enhance CategoryServiceImpl with exception handling and authority checks for create, update, and delete methods
+[33mccf14d5[m Add CategoryController class to handle category-related requests
+[33mbcbcc4b[m Add CategoryMapper class to convert Category to CategoryDTO
+[33m67cf611[m Refactor: add exception handling to create, update, and delete methods in CategoryService interface
+[33me871837[m Refactor: add comment to clarify implementation of CategoryService interface in CategoryServiceImpl
+[33m76faae9[m Refactor: add comment to clarify interface method creation in CategoryService
+[33mb8a66a8[m Refactor: add comment for clarity in CategoryRepository
+[33mde6a834[m Refactor: update comment for clarity in CategoryDTO
+[33mf581f28[m Refactor: remove duplicate comment in Category entity
+[33ma4be555[m Refactor: add comment to clarify search mapping in ProductController
+[33m7bd0aca[m Reapply "Feat: add getmapping to search in productcontroller"
+[33m50d8dcb[m Revert "Feat: add getmapping to search in productcontroller"
+[33m55776fe[m Feat: add getmapping to search in productcontroller
+[33ma49fcc3[m Feat: implement product functionality in ProductController
+[33me10d8b4[m Fix: update product service implementation logic
+[33m25782a9[m Update: product service interface
+[33m26c78ed[m Refactor: update product mapping logic
+[33mcbd66f4[m Fix: updateProduct exception handling in ProductController
+[33mae3b279[m Revert "fix : throw exception "updateproduct""
+[33m4944e65[m fix : throw exception "updateproduct"
+[33m746261e[m feat: implement ProductMapper for converting between Product and ProductDTO
+[33m9594770[m feat: create ProductRepository interface for product data access
+[33ma7ec4af[m feat: add ProductDTO class for product data transfer
+[33m1c97f8b[m feat: implement ProductServiceImpl with CRUD methods for product management
+[33m34a3178[m feat: create ProductService interface with CRUD methods for product management
+[33m1eb8269[m feat: add moderateStore method and update store retrieval in StoreController
+[33m6d51061[m feat: add Product entity with fields and lifecycle methods
+[33m127121f[m feat: update UserRole enum to include ROLE_USER and ROLE_STORE_ADMIN
+[33m46a3534[m feat: implement moderateStore method in StoreServiceImpl for store status updates
+[33mcfe3076[m feat: add moderateStore method to StoreService interface for store moderation functionality
+[33m1112452[m feat: create ApiResponse class for standardized API responses
+[33md835d3d[m feat: expand StoreController with additional endpoints for retrieving and managing stores
+[33m7b3fdee[m feat: add StoreController with create and retrieve store endpoints
+[33m87c560a[m fix: change UserException to extend Exception instead of Throwable
+[33mfe71162[m feat: enhance StoreContact class with Lombok annotations for builder and constructors
+[33m2c61672[m feat: add Store association to User model
+[33m3710f18[m feat: update StoreService interface to include exception handling for store operations
+[33m567535f[m feat: enhance StoreServiceImpl with store update and delete logic, and improve exception handling
+[33md2d521f[m feat: update StoreService and StoreServiceImpl to handle exceptions and implement store creation logic
+[33m78c6b1c[m feat: add StoreMapper class for converting between Store and StoreDTO
+[33m3670462[m feat: create StoreRepository interface for store data access
+[33m9da910d[m feat: add Lombok @Data annotation to StoreDTO for automatic getter/setter generation
+[33m1ae2024[m feat: refactor StoreServiceImpl to include repository and user service dependencies
+[33m7745b6f[m feat: implement StoreService interface in StoreServiceImpl class
+[33mf179161[m feat: expand StoreService interface with additional store management methods
+[33m9eb5db9[m feat: implement StoreService interface for store creation functionality
+[33mf2c51bd[m feat: add StoreDTO class for transferring store data
+[33m609d107[m feat: add StoreContact class for managing store contact information
+[33m42fbcba[m feat: add StoreStatus enum for managing store status states
+[33m85a00a3[m feat: add Store entity with attributes and lifecycle methods
+[33m4d944be[m feat: add exception handling to UserService methods
+[33mab3650d[m feat: add UserController for user profile and retrieval operations
+[33mde451a0[m feat: implement getCurrentUser and getUserByEmail methods in UserServiceImpl
+[33mcf6f07c[m feat: implement UserServiceImpl for user management operations - "getUserFromJwtToken" done
+[33m4c850fd[m feat: create UserService interface for user management operations
+[33mfadd71b[m feat: add AuthController for user authentication endpoints
+[33m31bdd11[m feat: implement login method in AuthServiceImpl for user authentication
+[33me1b44ba[m fix: add exception handling to login method in AuthService interface
+[33m117cf3a[m fix: add default auto generator unique id for 'User' during signup
+[33ma034023[m fix: add 'fullname' UserMapper class for mapping User to UserDto
+[33mbfaffb4[m feat: add UserException class for handling user-related exceptions
+[33ma21fd21[m feat: implement AuthServiceImpl for user signup and authentication
+[33me12d6cf[m feat: create AuthResponse class for handling authentication responses
+[33m4a97a2f[m feat: create AuthService interface for user authentication methods
+[33ma55dfb0[m feat: add UserRepository interface for user data access
+[33m020120a[m feat: create UserDto class for user data transfer
+[33m915de61[m feat: implement CustomUserImplementation for user authentication
+[33mddf5ff0[m feat: create User entity with fields for role management and timestamps
+[33m21d57d3[m feat: add UserRole enum for role management
+[33m038eb61[m feat: add BCryptPasswordEncoder for password hashing
+[33m9417815[m fix: update CORS configuration for improved security and functionality
+[33m233af2e[m feat: to handle generated security pas
