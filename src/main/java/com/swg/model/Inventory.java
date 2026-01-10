@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Inventory {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 
