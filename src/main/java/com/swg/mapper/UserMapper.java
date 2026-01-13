@@ -6,18 +6,21 @@ import com.swg.payload.dto.UserDto;
 public class UserMapper {
 
 
-    public static UserDto toDTO(User saveduser) {
+    public static UserDto toDTO(User savedUser) {
 
         UserDto userDto = new UserDto();
 
-        userDto.setId(saveduser.getId());
-        userDto.setFullName(saveduser.getFullName());
-        userDto.setEmail(saveduser.getEmail());
-        userDto.setRole(saveduser.getRole());
-        userDto.setCreatedAt(saveduser.getCreatedAt());
-        userDto.setUpdatedAt(saveduser.getUpdatedAt());
-        userDto.setLastLogin(saveduser.getLastLogin());
-        userDto.setPhone(saveduser.getPhone());
+        userDto.setId(savedUser.getId());
+        userDto.setFullName(savedUser.getFullName());
+        userDto.setEmail(savedUser.getEmail());
+        userDto.setRole(savedUser.getRole());
+        userDto.setCreatedAt(savedUser.getCreatedAt());
+        userDto.setUpdatedAt(savedUser.getUpdatedAt());
+        userDto.setLastLogin(savedUser.getLastLogin());
+        userDto.setPhone(savedUser.getPhone());
+
+        userDto.setStoreId(savedUser.getStore()!=null? savedUser.getStore().getId():null);
+        userDto.setBranchId(savedUser.getBranch()!=null? savedUser.getBranch().getId():null);
 
         return userDto;
     }
