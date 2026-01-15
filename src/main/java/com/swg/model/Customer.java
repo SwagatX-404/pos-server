@@ -19,7 +19,7 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false)
-    private String firstname;
+    private String fullName;
 
     private String email;
 
