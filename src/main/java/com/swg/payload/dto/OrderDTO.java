@@ -1,5 +1,6 @@
 package com.swg.payload.dto;
 
+import com.swg.domain.PaymentType;
 import com.swg.model.Branch;
 import com.swg.model.Customer;
 import com.swg.model.User;
@@ -8,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -28,6 +30,8 @@ public class OrderDTO {
     private UserDto cashier;
 
     private Customer customer;
+
+    private PaymentType paymentType;
 
     private List<OrderItemDTO> items;
 }
