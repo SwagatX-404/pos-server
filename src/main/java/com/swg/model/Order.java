@@ -1,6 +1,7 @@
 package com.swg.model;
 
 
+import com.swg.domain.PaymentType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +35,8 @@ public class Order {
 
     @OneToMany
     private List<OrderItem> orderItems;
+
+    private PaymentType paymentType;
 
     @PrePersist
     protected void onCreate(){
