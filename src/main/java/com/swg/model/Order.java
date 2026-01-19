@@ -34,7 +34,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany
-    private List<OrderItem> orderItems;
+    private List<OrderItem> Items;
 
     private PaymentType paymentType;
 
