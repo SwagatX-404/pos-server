@@ -3,6 +3,7 @@ package com.swg.payload.dto;
 import com.swg.domain.PaymentType;
 import com.swg.model.Branch;
 import com.swg.model.Customer;
+import com.swg.model.OrderItem;
 import com.swg.model.User;
 import jakarta.persistence.ManyToOne;
 import lombok.Builder;
