@@ -2,6 +2,7 @@ package com.swg.service.impl;
 
 import com.swg.domain.OrderStatus;
 import com.swg.domain.PaymentType;
+import com.swg.mapper.OrderMapper;
 import com.swg.model.*;
 import com.swg.payload.dto.OrderDTO;
 import com.swg.repository.OrderRepository;
@@ -59,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
 
             Order savedOrder = orderRepository.save(order);
 
-        return null;
+        return OrderMapper.toDTO(savedOrder);
     }
 
 
