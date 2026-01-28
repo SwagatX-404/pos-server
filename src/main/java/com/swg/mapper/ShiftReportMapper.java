@@ -10,8 +10,10 @@ import com.swg.payload.dto.RefundDTO;
 import com.swg.payload.dto.ShiftReportDTO;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShiftReportMapper {
+
 
 
     public static ShiftReportDTO toDTO(ShiftReport entity) {
@@ -39,20 +41,32 @@ public class ShiftReportMapper {
     }
 
     private static List<RefundDTO> mapRefunds(List<Refund> refunds) {
+
+        if(refunds == null || refunds.isEmpty())
+        { return null; }
+
         return refunds.stream()
                 .map(RefundMapper::toDTO)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private static List<ProductDTO> mapProducts(List<Product> topSellingProducts) {
+
+        if( topSellingProducts == null || topSellingProducts.isEmpty())
+        { return null; }
+
         return topSellingProducts.stream()
                 .map(ProductMapper::toDTO)
-                .toList();
-    }
+                .collect(Collectors.toList());
 
+    }
     private static List<OrderDTO> mapOrders(List<Order> recentOrders) {
+
+        if(recentOrders == null || recentOrders.isEmpty())
+        { return null; }
+
         return recentOrders.stream()
                 .map(OrderMapper::toDTO)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
