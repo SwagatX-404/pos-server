@@ -1,0 +1,22 @@
+package com.swg.repository;
+
+import com.swg.model.ShiftReport;
+import com.swg.model.User;
+import com.swg.payload.dto.ShiftReportDTO;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+public interface ShiftReportRepository extends JpaRepository<ShiftReportDTO, Long> {
+
+    List<ShiftReport> findByCashierId(Long cashierId);
+    List<ShiftReport> findByBranchId(Long branchId);
+
+    Optional<ShiftReport> findByTopCashierAndShiftEndIsNullOrderByShiftStartDesc( User cashier);
+
+    Optional<ShiftReport> findByCashierAndShiftStartBetween(User cashier,
+                                                            LocalDateTime start,
+                                                            LocalDateTime end);
+}
