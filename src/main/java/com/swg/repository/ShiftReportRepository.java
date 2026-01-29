@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface ShiftReportRepository extends JpaRepository<ShiftReportDTO, Long> {
+public interface ShiftReportRepository extends JpaRepository<ShiftReport, Long> {
 
     List<ShiftReport> findByCashierId(Long cashierId);
     List<ShiftReport> findByBranchId(Long branchId);
