@@ -65,7 +65,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
 
         User currentUser = userService.getCurrentUser();
 
-        ShiftReport shiftReport = shiftReportRepository.findByTopCashierAndShiftEndIsNullOrderByShiftStartDesc(currentUser)
+        ShiftReport shiftReport = shiftReportRepository.findTopByCashierAndShiftEndIsNullOrderByShiftStartDesc(currentUser)
                 .orElseThrow(() -> new UserException("Shift report not found...!"));
 
         shiftReport.setShiftEnd(shiftEnd);
@@ -150,7 +150,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
         User user = userService.getCurrentUser();
 
         ShiftReport shiftReport = shiftReportRepository
-                .findByTopCashierAndShiftEndIsNullOrderByShiftStartDesc(user).orElseThrow(
+                .findTopByCashierAndShiftEndIsNullOrderByShiftStartDesc(user).orElseThrow(
                         ()-> new UserException("No active shift found for the user/cashier..!")
                 );
 
@@ -169,6 +169,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
                 user.getId(),
                 shiftReport.getShiftStart(),
                 shiftReport.getShiftEnd()
+                //now
         );
 
         double totalRefunds = refunds.stream()
