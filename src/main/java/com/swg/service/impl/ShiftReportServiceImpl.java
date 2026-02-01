@@ -30,12 +30,11 @@ public class ShiftReportServiceImpl implements ShiftReportService {
 
 
     @Override
-    public ShiftReportDTO startShift(Long cashierId,
-                                     Long branchId,
-                                     LocalDateTime shiftStart) throws Exception {
+    public ShiftReportDTO startShift( ) throws Exception {
 
-        User currentUser =  userService.getUserById(cashierId);
-        shiftStart = LocalDateTime.now();
+        User currentUser =  userService.getCurrentUser();
+        LocalDateTime shiftStart = LocalDateTime.now();
+
         LocalDateTime startOfDay = shiftStart.withHour(0).withMinute(0).withSecond(0);
 
         LocalDateTime endOfDay = shiftStart.withHour(23).withMinute(59).withSecond(59);
@@ -138,7 +137,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
     }
 
     @Override
-    public List<ShiftReportDTO> GetShiftReportsByCashierId(Long cashierId) {
+    public List<ShiftReportDTO> getShiftReportsByCashierId(Long cashierId) {
         List<ShiftReport> reports = shiftReportRepository.findByCashierId(cashierId);
         return reports.stream()
                 .map(ShiftReportMapper::toDTO).collect(Collectors.toList());
