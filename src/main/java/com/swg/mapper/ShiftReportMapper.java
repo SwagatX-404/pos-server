@@ -8,9 +8,11 @@ import com.swg.payload.dto.OrderDTO;
 import com.swg.payload.dto.ProductDTO;
 import com.swg.payload.dto.RefundDTO;
 import com.swg.payload.dto.ShiftReportDTO;
+import lombok.Builder;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 public class ShiftReportMapper {
 
