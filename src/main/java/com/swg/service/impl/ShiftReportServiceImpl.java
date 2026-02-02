@@ -128,7 +128,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
     }
 
     @Override
-    public List<ShiftReportDTO> GetShiftReportsByBranchId(Long branchId) {
+    public List<ShiftReportDTO> getShiftReportsByBranchId(Long branchId) {
 
         List<ShiftReport> reports = shiftReportRepository.findByBranchId(branchId);
         return reports.stream().map(
@@ -167,8 +167,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
         List<Refund> refunds= refundRepository.findByCashierIdAndCreatedAtBetween(
                 user.getId(),
                 shiftReport.getShiftStart(),
-                shiftReport.getShiftEnd()
-                //now
+                now
         );
 
         double totalRefunds = refunds.stream()
@@ -210,7 +209,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
 
         ShiftReport report = shiftReportRepository
                 .findByCashierAndShiftStartBetween(cashier, start, end)
-                .orElseThrow(()-> new Exception("Shift Report not found for the cashier...!"));
+                .orElseThrow(()-> new Exception("Shift Report not found for date...!"));
 
         return ShiftReportMapper.toDTO(report);
     }
